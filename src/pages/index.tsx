@@ -1,46 +1,11 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import generator from "generate-password";
-import { Button, Center, Group, Stack } from "@mantine/core";
-import { useCallback, useState } from "react";
+import { Group } from "@mantine/core";
+import { PasswordGenerator } from "../components/PasswordGenerator";
+import { UsernameGenerator } from "../components/UsernameGenerator";
 
 const Home: NextPage = () => {
-  const [generatedUsername, setGeneratedUsername] = useState<string>("");
-  const [generatedPassword, setGeneratedPassword] = useState<string>("");
-
-  const generateUsername = useCallback(() => {
-    const username =
-      generator.generate({
-        length: 1,
-        numbers: false,
-        uppercase: false,
-        excludeSimilarCharacters: true,
-        strict: true,
-      }) +
-      generator.generate({
-        length: 7,
-        numbers: true,
-        uppercase: false,
-        excludeSimilarCharacters: true,
-        strict: true,
-      });
-
-    setGeneratedUsername(username);
-  }, []);
-
-  const generatePassword = useCallback(() => {
-    const password = generator.generate({
-      length: 16,
-      numbers: true,
-      symbols: true,
-      excludeSimilarCharacters: true,
-      strict: true,
-    });
-
-    setGeneratedPassword(password);
-  }, []);
-
   return (
     <div className={styles.container}>
       <Head>
@@ -50,24 +15,9 @@ const Home: NextPage = () => {
       </Head>
 
       <Group>
-        <Stack>
-          <Button onClick={generateUsername} size="xl">
-            Generate Username
-          </Button>
-          <Button size="xl" style={{ fontSize: "16px" }}>
-            {generatedUsername}
-          </Button>
-        </Stack>
+        <UsernameGenerator />
 
-        <Stack>
-          <Button onClick={generatePassword} size="xl">
-            Generate Password
-          </Button>
-
-          <Button size="xl" style={{ fontSize: "16px" }}>
-            {generatedPassword}
-          </Button>
-        </Stack>
+        <PasswordGenerator />
       </Group>
     </div>
   );
