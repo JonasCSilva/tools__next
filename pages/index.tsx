@@ -2,21 +2,34 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import generator from "generate-password";
+import { Button, Center, Group, Stack } from "@mantine/core";
+import { useCallback, useState } from "react";
 
 const Home: NextPage = () => {
-  const generateUsername = () => {
-    const username = generator.generate({
-      length: 8,
-      numbers: true,
-      uppercase: false,
-      excludeSimilarCharacters: true,
-      strict: true,
-    });
+  const [generatedUsername, setGeneratedUsername] = useState<string>("");
+  const [generatedPassword, setGeneratedPassword] = useState<string>("");
 
-    console.log(username);
-  };
+  const generateUsername = useCallback(() => {
+    const username =
+      generator.generate({
+        length: 1,
+        numbers: false,
+        uppercase: false,
+        excludeSimilarCharacters: true,
+        strict: true,
+      }) +
+      generator.generate({
+        length: 7,
+        numbers: true,
+        uppercase: false,
+        excludeSimilarCharacters: true,
+        strict: true,
+      });
 
-  const generatePassword = () => {
+    setGeneratedUsername(username);
+  }, []);
+
+  const generatePassword = useCallback(() => {
     const password = generator.generate({
       length: 16,
       numbers: true,
@@ -25,8 +38,8 @@ const Home: NextPage = () => {
       strict: true,
     });
 
-    console.log(password);
-  };
+    setGeneratedPassword(password);
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -36,9 +49,26 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <button onClick={generateUsername}>Generate Username</button>
+      <Group>
+        <Stack>
+          <Button onClick={generateUsername} size="xl">
+            Generate Username
+          </Button>
+          <Button size="xl" style={{ fontSize: "16px" }}>
+            {generatedUsername}
+          </Button>
+        </Stack>
 
-      <button onClick={generatePassword}>Generate Password</button>
+        <Stack>
+          <Button onClick={generatePassword} size="xl">
+            Generate Password
+          </Button>
+
+          <Button size="xl" style={{ fontSize: "16px" }}>
+            {generatedPassword}
+          </Button>
+        </Stack>
+      </Group>
     </div>
   );
 };
