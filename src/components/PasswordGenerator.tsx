@@ -1,12 +1,12 @@
-import { useCallback, useState } from "react";
-import generator from "generate-password";
-import { Button, Stack } from "@mantine/core";
-import { useClipboard } from "@mantine/hooks";
+import { Button, Stack } from '@mantine/core'
+import { useClipboard } from '@mantine/hooks'
+import generator from 'generate-password'
+import { useCallback, useState } from 'react'
 
 export const PasswordGenerator = () => {
-  const [generatedPassword, setGeneratedPassword] = useState<string>("");
+  const [generatedPassword, setGeneratedPassword] = useState<string>('')
 
-  const { copied, copy } = useClipboard({ timeout: 1000 });
+  const { copied, copy } = useClipboard({ timeout: 1000 })
 
   const generatePassword = useCallback(() => {
     const password = generator.generate({
@@ -14,26 +14,26 @@ export const PasswordGenerator = () => {
       numbers: true,
       symbols: true,
       excludeSimilarCharacters: true,
-      strict: true,
-    });
+      strict: true
+    })
 
-    setGeneratedPassword(password);
-  }, []);
+    setGeneratedPassword(password)
+  }, [])
 
   return (
     <Stack>
-      <Button onClick={generatePassword} size="xl">
+      <Button onClick={generatePassword} size='xl'>
         Generate Password
       </Button>
 
       <Button
-        size="xl"
-        style={{ fontSize: "16px" }}
-        color={copied ? "teal" : "blue"}
+        size='xl'
+        style={{ fontSize: '16px' }}
+        color={copied ? 'teal' : 'blue'}
         onClick={() => copy(generatedPassword)}
       >
         {generatedPassword}
       </Button>
     </Stack>
-  );
-};
+  )
+}
