@@ -1,9 +1,12 @@
 import { useCallback, useState } from "react";
 import generator from "generate-password";
 import { Button, Stack } from "@mantine/core";
+import { useClipboard } from "@mantine/hooks";
 
 export const PasswordGenerator = () => {
   const [generatedPassword, setGeneratedPassword] = useState<string>("");
+
+  const { copied, copy } = useClipboard({ timeout: 1000 });
 
   const generatePassword = useCallback(() => {
     const password = generator.generate({
@@ -23,7 +26,12 @@ export const PasswordGenerator = () => {
         Generate Password
       </Button>
 
-      <Button size="xl" style={{ fontSize: "16px" }}>
+      <Button
+        size="xl"
+        style={{ fontSize: "16px" }}
+        color={copied ? "teal" : "blue"}
+        onClick={() => copy(generatedPassword)}
+      >
         {generatedPassword}
       </Button>
     </Stack>

@@ -14,11 +14,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Group>
+      <main className={styles.main}>
         <UsernameGenerator />
 
         <PasswordGenerator />
-      </Group>
+      </main>
     </div>
   );
 };

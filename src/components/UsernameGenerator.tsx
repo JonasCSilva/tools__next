@@ -1,9 +1,12 @@
 import { useCallback, useState } from "react";
 import generator from "generate-password";
 import { Button, Stack } from "@mantine/core";
+import { useClipboard } from "@mantine/hooks";
 
 export const UsernameGenerator = () => {
   const [generatedUsername, setGeneratedUsername] = useState<string>("");
+
+  const { copied, copy } = useClipboard({ timeout: 1000 });
 
   const generateUsername = useCallback(() => {
     const username =
@@ -30,7 +33,12 @@ export const UsernameGenerator = () => {
       <Button onClick={generateUsername} size="xl">
         Generate Username
       </Button>
-      <Button size="xl" style={{ fontSize: "16px" }}>
+      <Button
+        size="xl"
+        style={{ fontSize: "16px" }}
+        color={copied ? "teal" : "blue"}
+        onClick={() => copy(generatedUsername)}
+      >
         {generatedUsername}
       </Button>
     </Stack>
