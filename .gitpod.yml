@@ -5,9 +5,5 @@ tasks:
 
 vscode:
   extensions:
-    - vscode-icons-team.vscode-icons
     - dbaeumer.vscode-eslint
-    - eamodio.gitlens
-    - dracula-theme.theme-dracula
     - esbenp.prettier-vscode
-    - TabNine.tabnine-vscode
