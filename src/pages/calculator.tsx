@@ -3,7 +3,10 @@ import { NextPage } from 'next'
 import Head from 'next/head'
 
 import NavbarContent from '../components/NavbarContent'
-import styles from '../styles/pages.module.scss'
+import CapitalForm from '../components/forms/CapitalForm'
+import ContributionForm from '../components/forms/ContributionForm'
+import InterestForm from '../components/forms/InterestForm'
+import TimeForm from '../components/forms/TimeForm'
 
 const Calculator: NextPage = () => {
   return (
@@ -14,13 +17,24 @@ const Calculator: NextPage = () => {
       </Head>
       <AppShell
         padding='md'
+        styles={{
+          main: {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-around',
+            flexDirection: 'row'
+          }
+        }}
         navbar={
           <Navbar width={{ base: 300 }} p='xs'>
             <NavbarContent path='calculator' />
           </Navbar>
         }
       >
-        <main className={styles.main} />
+        <ContributionForm />
+        <TimeForm />
+        <InterestForm />
+        <CapitalForm />
       </AppShell>
     </>
   )

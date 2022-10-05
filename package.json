@@ -12,6 +12,7 @@
     "@emotion/react": "^11.10.0",
     "@emotion/server": "^11.10.0",
     "@mantine/core": "^5.1.6",
+    "@mantine/form": "^5.5.2",
     "@mantine/hooks": "^5.1.6",
     "@mantine/next": "^5.1.6",
     "generate-password": "^1.7.0",

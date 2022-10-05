@@ -5,7 +5,6 @@ import Head from 'next/head'
 import NavbarContent from '../components/NavbarContent'
 import { PasswordGenerator } from '../components/PasswordGenerator'
 import { UsernameGenerator } from '../components/UsernameGenerator'
-import styles from '../styles/pages.module.scss'
 
 const Generator: NextPage = () => {
   return (
@@ -16,17 +15,23 @@ const Generator: NextPage = () => {
       </Head>
       <AppShell
         padding='md'
+        styles={{
+          main: {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-around',
+            flexDirection: 'row'
+          }
+        }}
         navbar={
           <Navbar width={{ base: 300 }} p='xs'>
             <NavbarContent path='generator' />
           </Navbar>
         }
       >
-        <main className={styles.main}>
-          <UsernameGenerator />
+        <UsernameGenerator />
 
-          <PasswordGenerator />
-        </main>
+        <PasswordGenerator />
       </AppShell>
     </>
   )
