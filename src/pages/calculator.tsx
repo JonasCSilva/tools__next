@@ -3,7 +3,7 @@ import { NextPage } from 'next'
 import Head from 'next/head'
 
 import NavbarContent from '../components/NavbarContent'
-import styles from '../styles/pages.module.css'
+import styles from '../styles/pages.module.scss'
 
 const Calculator: NextPage = () => {
   return (
