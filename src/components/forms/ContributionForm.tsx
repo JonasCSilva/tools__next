@@ -36,7 +36,7 @@ export default function ContributionForm() {
         <TextInput required label='Valor final' {...form.getInputProps('capital')} />
 
         <Group position='center' mt='md'>
-          <Button type='submit'>Submit</Button>
+          <Button type='submit'>Calculate</Button>
         </Group>
       </form>
     </Box>

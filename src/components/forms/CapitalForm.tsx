@@ -36,7 +36,7 @@ export default function CapitalForm() {
         <TextInput disabled value={+capital.toFixed(4)} label='Valor final' />
 
         <Group position='center' mt='md'>
-          <Button type='submit'>Submit</Button>
+          <Button type='submit'>Calculate</Button>
         </Group>
       </form>
     </Box>
