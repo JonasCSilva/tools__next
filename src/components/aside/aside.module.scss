@@ -1,0 +1,19 @@
+.root {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  height: 100vh;
+}
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  border-right: 1px solid #2D3748;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
