@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ReactNode } from 'react'
 
-// import styles from './layout.module.scss'
+import styles from './layout.module.scss'
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname()
@@ -14,21 +14,21 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
   return (
     <html lang='en'>
-      <body /* className={styles.root} */>
-        <aside /* className={styles.aside} */>
+      <body className={styles.root}>
+        <aside className={styles.aside}>
           <Link href='/username'>
-            {/* <Button disabled={path === 'username'}> */}Username{/* </Button> */}
+            <button disabled={path === 'username'}>Username </button>
           </Link>
           <Link href='/password'>
-            {/* <Button disabled={path === 'password'}> */}Password{/* </Button> */}
+            <button disabled={path === 'password'}> Password </button>
           </Link>
           <Link href='/compound-interest-with-contributions'>
-            {/* <Button disabled={path === 'compound-interest-with-contributions'}> */}
-            Compound interest with contributions
-            {/* </Button> */}
+            <button disabled={path === 'compound-interest-with-contributions'}>
+              Compound interest with contributions
+            </button>
           </Link>
         </aside>
-        <main /* className={styles.main} */>{children}</main>
+        <main className={styles.main}>{children}</main>
       </body>
     </html>
   )

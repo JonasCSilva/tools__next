@@ -2,13 +2,15 @@
   display: grid;
   grid-template-columns: 1fr 4fr;
   height: 100vh;
+  background: black;
+  margin: 0;
 }
 
 .aside {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 2rem 1rem;
+  padding: 2rem 1.5rem;
   border-right: 1px solid #2d3748;
 }
 
