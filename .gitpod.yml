@@ -1,7 +1,5 @@
-# https://www.gitpod.io/docs/config-gitpod-file
-
 tasks:
-  - init: npm i
+  - init: pnpm i
 
 vscode:
   extensions:
