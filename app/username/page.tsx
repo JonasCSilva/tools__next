@@ -1,14 +1,12 @@
 'use client'
 
-import { Button, Stack } from '@mantine/core'
-import { useClipboard } from '@mantine/hooks'
 import generator from 'generate-password'
 import { useCallback, useState } from 'react'
 
 export default function Page() {
   const [generatedUsername, setGeneratedUsername] = useState<string>('')
 
-  const { copied, copy } = useClipboard({ timeout: 1000 })
+  // const { copied, copy } = useClipboard({ timeout: 1000 })
 
   const generateUsername = useCallback(() => {
     const username =
@@ -31,18 +29,16 @@ export default function Page() {
   }, [])
 
   return (
-    <Stack>
-      <Button onClick={generateUsername} size='xl'>
-        Generate Username
-      </Button>
-      <Button
-        size='xl'
+    <div>
+      <button onClick={generateUsername} /* size='xl' */>Generate Username</button>
+      <button
+        /* size='xl' */
         style={{ fontSize: '16px' }}
-        color={copied ? 'teal' : 'blue'}
-        onClick={() => copy(generatedUsername)}
+        /* color={copied ? 'teal' : 'blue'} */
+        /* onClick={() => copy(generatedUsername)} */
       >
         {generatedUsername}
-      </Button>
-    </Stack>
+      </button>
+    </div>
   )
 }
