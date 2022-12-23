@@ -1,9 +1,11 @@
+'use client'
+
 import { Button, Stack } from '@mantine/core'
 import { useClipboard } from '@mantine/hooks'
 import generator from 'generate-password'
 import { useCallback, useState } from 'react'
 
-export const UsernameGenerator = () => {
+export default function Page() {
   const [generatedUsername, setGeneratedUsername] = useState<string>('')
 
   const { copied, copy } = useClipboard({ timeout: 1000 })

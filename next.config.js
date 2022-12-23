@@ -4,6 +4,15 @@ const nextConfig = {
   swcMinify: true,
   experimental: {
     appDir: true
+  },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/password',
+        permanent: true
+      }
+    ]
   }
 }
 
