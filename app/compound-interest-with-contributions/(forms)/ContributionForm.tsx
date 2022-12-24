@@ -1,46 +1,49 @@
 'use client'
 
-import { Group, TextInput, Box, Button, NumberInput } from '@mantine/core'
-import { useForm } from '@mantine/form'
-import { useState, useCallback } from 'react'
+import { useCallback, useState } from 'react'
+import { useForm } from 'react-hook-form'
+
+import styles from './form.module.scss'
 
 export function ContributionForm() {
-  const form = useForm({
-    initialValues: {
+  const { handleSubmit, register } = useForm({
+    defaultValues: {
       capital: 0,
       time: 0,
       interest: 0
     }
   })
+
   const [contribution, setContribution] = useState(0)
 
-  const getResult = useCallback(
-    (values: typeof form.values) => {
-      const capital = Number(values.capital)
-      const time = Number(values.time)
-      const interest = Number(values.interest)
+  const onSubmit = useCallback((values: any) => {
+    const capital = Number(values.capital)
+    const time = Number(values.time)
+    const interest = Number(values.interest)
 
-      const contribution = capital / (((1 + interest) ** time - 1) / interest) / (1 + interest)
-      setContribution(contribution)
-    },
-    [form]
-  )
+    const contribution = capital / (((1 + interest) ** time - 1) / interest) / (1 + interest)
+    setContribution(contribution)
+  }, [])
 
   return (
-    <Box sx={{ maxWidth: 300 }} mx='auto'>
-      <form onSubmit={form.onSubmit(getResult)}>
-        <TextInput disabled value={+contribution.toFixed(4)} label='Aporte' />
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div className={styles.root}>
+        <label htmlFor='contribution'>Aporte</label>
+        <input type='number' id='contribution' step='any' value={+contribution.toFixed(4)} readOnly />
 
-        <NumberInput required label='Periodo' {...form.getInputProps('time')} />
+        <label htmlFor='time'>Periodo</label>
+        <input type='number' id='time' step='any' {...register('time')} />
 
-        <NumberInput step={0.0005} precision={4} required label='Taxa' {...form.getInputProps('interest')} />
+        <label htmlFor='interest'>Taxa</label>
+        <input type='number' id='interest' step='any' {...register('interest')} />
 
-        <TextInput required label='Valor final' {...form.getInputProps('capital')} />
+        <label htmlFor='capital'>Valor final</label>
+        <input type='number' id='capital' step='any' {...register('capital')} />
 
-        <Group position='center' mt='md'>
-          <Button type='submit'>Calculate</Button>
-        </Group>
-      </form>
-    </Box>
+        <div>
+          <button type='submit'>Calculate</button>
+        </div>
+      </div>
+    </form>
   )
 }

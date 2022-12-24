@@ -1,9 +1,10 @@
-.root {
+.body {
   display: grid;
   grid-template-columns: 1fr 4fr;
   height: 100vh;
   background: black;
   margin: 0;
+  color: white;
 }
 
 .aside {
