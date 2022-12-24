@@ -1,32 +1,30 @@
+'use client'
+
 import { Group, TextInput, Box, Button, NumberInput } from '@mantine/core'
 import { useForm } from '@mantine/form'
 import { useState, useCallback } from 'react'
 
-export default function InterestForm() {
+export function TimeForm() {
   const form = useForm({
     initialValues: {
       contribution: 0,
       capital: 0,
-      time: 0
+      interest: 0
     }
   })
-  const [interest, setInterest] = useState(0)
+  const [capital, setCapital] = useState(0)
 
   const getResult = useCallback(
     (values: typeof form.values) => {
       const contribution = Number(values.contribution)
       const capital = Number(values.capital)
-      const time = Number(values.time)
+      const interest = Number(values.interest)
 
-      let testCapital = 0
-      let interest = 0
-
-      while (+testCapital.toFixed(4) < +capital.toFixed(4)) {
-        interest += 0.0005
-        testCapital = (contribution * (1 + interest) * ((1 + interest) ** time - 1)) / interest
-      }
-
-      setInterest(interest)
+      const time =
+        Math.log(
+          (capital + (contribution * (1 + interest)) / interest) / ((contribution * (1 + interest)) / interest)
+        ) / Math.log(1 + interest)
+      setCapital(time)
     },
     [form]
   )
@@ -36,9 +34,9 @@ export default function InterestForm() {
       <form onSubmit={form.onSubmit(getResult)}>
         <TextInput required label='Aporte' {...form.getInputProps('contribution')} />
 
-        <NumberInput required label='Periodo' {...form.getInputProps('time')} />
+        <NumberInput disabled value={+capital.toFixed(4)} label='Periodo' />
 
-        <NumberInput step={0.0005} precision={4} disabled value={+interest.toFixed(4)} label='Taxa' />
+        <NumberInput step={0.0005} precision={4} required label='Taxa' {...form.getInputProps('interest')} />
 
         <TextInput required label='Valor final' {...form.getInputProps('capital')} />
 

@@ -1,8 +1,10 @@
+'use client'
+
 import { Group, TextInput, Box, Button, NumberInput } from '@mantine/core'
 import { useForm } from '@mantine/form'
 import { useState, useCallback } from 'react'
 
-export default function CapitalForm() {
+export function CapitalForm() {
   const form = useForm({
     initialValues: {
       contribution: 0,
