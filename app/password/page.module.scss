@@ -10,9 +10,10 @@
   width: 18rem;
   color: white;
   border-radius: 0.4rem;
+  border: none;
 
   &:disabled {
-    background-color: dimgrey;
+    background-color: #373A40;
   }
 
   &:not(:disabled) {

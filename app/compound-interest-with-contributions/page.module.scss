@@ -1,7 +1,8 @@
 .root {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  grid-template-columns: repeat(2, 30%);
+  justify-content: center;
   width: 100%;
-  gap: 2rem;
-  padding: 2rem
+  gap: 20%;
+  padding: 3rem;
 }
