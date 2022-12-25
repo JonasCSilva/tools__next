@@ -1,0 +1,34 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.button {
+  font-size: 1.5rem;
+  height: 5rem;
+  width: 18rem;
+  color: white;
+  border-radius: 0.4rem;
+
+  &:disabled {
+    background-color: dimgrey;
+  }
+
+  &:not(:disabled) {
+    cursor: pointer;
+    background-color: #1971c2;
+
+    &:not(:active):hover {
+      background-color: #1864ab;
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+}
+
+.copied:not(:disabled):active {
+  background-color: rgb(8, 127, 91);
+}

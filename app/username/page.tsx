@@ -1,12 +1,15 @@
 'use client'
 
+import clsx from 'clsx'
 import generator from 'generate-password'
 import { useCallback, useState } from 'react'
 
-export default function Page() {
-  const [generatedUsername, setGeneratedUsername] = useState<string>('')
+import styles from './page.module.scss'
 
-  // const { copied, copy } = useClipboard({ timeout: 1000 })
+const copy = (text: string) => navigator.clipboard.writeText(text)
+
+export default function Page() {
+  const [generatedUsername, setGeneratedUsername] = useState<string | null>(null)
 
   const generateUsername = useCallback(() => {
     const username =
@@ -29,13 +32,14 @@ export default function Page() {
   }, [])
 
   return (
-    <div>
-      <button onClick={generateUsername} /* size='xl' */>Generate Username</button>
+    <div className={styles.root}>
+      <button className={styles.button} onClick={generateUsername}>
+        Generate Username
+      </button>
       <button
-        /* size='xl' */
-        style={{ fontSize: '16px' }}
-        /* color={copied ? 'teal' : 'blue'} */
-        /* onClick={() => copy(generatedUsername)} */
+        className={clsx(styles.button, styles.copied)}
+        onClick={() => copy(generatedUsername!)}
+        disabled={!generatedUsername}
       >
         {generatedUsername}
       </button>
