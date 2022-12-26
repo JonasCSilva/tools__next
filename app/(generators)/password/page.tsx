@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import generator from 'generate-password'
 import { useCallback, useState } from 'react'
 
-import styles from './page.module.scss'
+import styles from '../generator.module.scss'
 
 const copy = (text: string) => navigator.clipboard.writeText(text)
 
