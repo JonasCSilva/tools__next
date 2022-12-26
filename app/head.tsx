@@ -2,20 +2,16 @@
 
 import { usePathname } from 'next/navigation'
 
-const title: { [key: string]: string } = {
-  password: 'Password Generator',
-  username: 'Username Generator',
-  'compound-interest-with-contributions': 'Compound Interest With Contributions Calculator'
-}
+import { titles } from './link'
 
 export default function Head() {
   const pathname = usePathname()
 
-  const path = pathname?.split('/')[1]!
+  const currentPath = pathname?.split('/')[1]!
 
   return (
     <>
-      <title>{title[path]}</title>
+      <title>{titles[currentPath]}</title>
       <link rel='icon' href='/favicon.ico' />
     </>
   )
