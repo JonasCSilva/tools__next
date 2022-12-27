@@ -1,14 +1,69 @@
 .root {
   display: flex;
   flex-direction: column;
+  row-gap: 0.8rem;
 
-  & > div:last-of-type {
-    margin-top: 1rem;
+  & > div {
+    display: flex;
+    flex-direction: column;
+
+    & > label {
+      color: rgb(193, 194, 197);
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding-bottom: 0.4rem;
+    }
+
+    & > input {
+      background-color: rgb(37, 38, 43);
+      border: 1px solid rgb(55, 58, 64);
+      border-radius: 0.4rem;
+      height: 2rem;
+      padding-left: 0.8rem;
+      padding-right: 0.8rem;
+
+      &[type='number']::-webkit-outer-spin-button,
+      &[type='number']::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+
+      &:not(:disabled) {
+        color: rgb(193, 194, 197);
+      }
+
+      &:disabled {
+        opacity: 0.6;
+        color: rgb(144, 146, 150);
+      }
+    }
+  }
+}
+
+.buttonContainer {
+  align-items: center;
+}
+
+.submitButton {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border: none;
+  border-radius: 0.4rem;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+
+  &:not(:hover) {
+    background-color: #1971c2;
   }
 
-  /* input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  } */
+  &:hover {
+    background-color: #1864ab;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
 }
