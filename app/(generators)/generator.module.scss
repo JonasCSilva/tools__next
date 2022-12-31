@@ -1,3 +1,5 @@
+@use '../(styles)/mixins' as mixins;
+
 .root {
   display: flex;
   flex-direction: column;
@@ -8,26 +10,8 @@
   font-size: 1.5rem;
   height: 5rem;
   width: 18rem;
-  color: white;
-  border-radius: 0.4rem;
-  border: none;
 
-  &:disabled {
-    background-color: #373A40;
-  }
-
-  &:not(:disabled) {
-    cursor: pointer;
-    background-color: #1971c2;
-
-    &:not(:active):hover {
-      background-color: #1864ab;
-    }
-
-    &:active {
-      transform: translateY(1px);
-    }
-  }
+  @include mixins.button;
 }
 
 .copied:not(:disabled):active {

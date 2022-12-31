@@ -1,0 +1,25 @@
+@use '../(styles)/variables' as vars;
+
+@mixin button {
+  border-radius: vars.$border-radius;
+  border: none;
+
+  &:disabled {
+    background-color: #373a40;
+    color: #25262b;
+  }
+
+  &:not(:disabled) {
+    cursor: pointer;
+    background-color: vars.$light-blue;
+    color: white;
+
+    &:not(:active):hover {
+      background-color: vars.$dark-blue;
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+}
