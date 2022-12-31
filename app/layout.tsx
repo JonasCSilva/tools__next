@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation'
 import { Fragment, ReactNode } from 'react'
 
 import styles from './layout.module.scss'
-import { linksGroups } from './link'
+import { linksGroups } from './links'
 
 const inter = Inter({ subsets: ['latin'] })
 

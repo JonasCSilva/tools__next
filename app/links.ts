@@ -15,6 +15,9 @@ const linksGroups: RawLinkGroups = [
       },
       {
         path: 'password'
+      },
+      {
+        path: 'word'
       }
     ]
   },

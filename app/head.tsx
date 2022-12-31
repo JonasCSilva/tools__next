@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 
-import { titles } from './link'
+import { titles } from './links'
 
 export default function Head() {
   const pathname = usePathname()
